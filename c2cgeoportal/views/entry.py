@@ -1160,7 +1160,7 @@ class Entry:
         # general templates_params handling
         d.update(templates_params)
 
-        set_common_headers(self.request, "cgxp_index", NO_CACHE)
+        set_common_headers(self.request, "index", NO_CACHE)
         return d
 
     def get_cgxp_permalinktheme_vars(self):
@@ -1220,14 +1220,14 @@ class Entry:
             d["permalink_themes"] = json.dumps(permalink_themes.split(","))
 
         set_common_headers(
-            self.request, "cgxp_viewer", NO_CACHE,
+            self.request, "config", NO_CACHE,
             vary=True, content_type="application/javascript",
         )
 
         return d
 
     def get_ngeo_index_vars(self, vars={}):
-        set_common_headers(self.request, "ngeo_index", NO_CACHE)
+        set_common_headers(self.request, "index", NO_CACHE)
 
         vars["debug"] = self.debug
 
@@ -1272,7 +1272,7 @@ class Entry:
         cache_version = self.settings.get("cache_version", None)
 
         set_common_headers(
-            self.request, "apijs", NO_CACHE,
+            self.request, "api", NO_CACHE,
             content_type="application/javascript",
         )
 
@@ -1296,7 +1296,7 @@ class Entry:
         cache_version = self.settings.get("cache_version", None)
 
         set_common_headers(
-            self.request, "apijs", NO_CACHE,
+            self.request, "api", NO_CACHE,
             content_type="application/javascript",
         )
 
@@ -1310,7 +1310,7 @@ class Entry:
 
     @view_config(route_name="apihelp", renderer="api/apihelp.html")
     def apihelp(self):
-        set_common_headers(self.request, "apihelp", NO_CACHE)
+        set_common_headers(self.request, "index", NO_CACHE)
 
         return {
             "lang": self.lang,
@@ -1319,7 +1319,7 @@ class Entry:
 
     @view_config(route_name="xapihelp", renderer="api/xapihelp.html")
     def xapihelp(self):
-        set_common_headers(self.request, "apihelp", NO_CACHE)
+        set_common_headers(self.request, "index", NO_CACHE)
 
         return {
             "lang": self.lang,
