@@ -1269,7 +1269,7 @@ class Entry:
         queryable_layers = [
             name for name in list(wms.contents)
             if wms[name].queryable == 1]
-        cache_version = self.settings.get("cache_version", None)
+        cache_version = get_cache_version()
 
         set_common_headers(
             self.request, "api", NO_CACHE,
@@ -1293,7 +1293,7 @@ class Entry:
             name for name in list(wms.contents)
             if wms[name].queryable == 1
         ]
-        cache_version = self.settings.get("cache_version", None)
+        cache_version = get_cache_version()
 
         set_common_headers(
             self.request, "api", NO_CACHE,
